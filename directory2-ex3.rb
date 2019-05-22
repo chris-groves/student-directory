@@ -1,21 +1,27 @@
 @students = [] # an empty array accessible to all methods
 
 def print_menu
-  puts "1. Input the students"
-  puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list from students.csv"
-  puts "9. Exit" # 9 because we'll be adding more items
+  options = {
+  "1" => "1. Input the students",
+  "2" => "2. Show the students",
+  "3" => "3. Save the list to students.csv",
+  "4" => "4. Load the list from students.csv",
+  "9" => "9. Exit" # 9 because we'll be adding more items
+  }
+
+  options.each do |key, value|
+    puts value
+  end
 end
 
 def interactive_menu
   loop do
     print_menu
-    process(STDIN.gets.chomp)
+    menu_action(STDIN.gets.chomp)
   end
 end
 
-def process(selection)
+def menu_action(selection)
   case selection
   when "1"
     input_students
